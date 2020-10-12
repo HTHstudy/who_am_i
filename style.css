@@ -1,0 +1,49 @@
+.section {
+  border: black 1px solid;
+}
+
+.profile {
+  display: flex;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: solid 2px red;
+}
+
+.profile-comment {
+  border: 1px red solid;
+}
+
+.hahaha {
+  border: solid 1px blue;
+  height: 200px;
+}
+
+nav {
+  border: solid 1px green;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  display: flex;
+}
+.nav-insta {
+  color: black;
+}
+
+.nav-github {
+  color: black;
+}
+
+.nav-velog {
+  color: black;
+}
+.nav-kakao {
+  color: black;
+}
