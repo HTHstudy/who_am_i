@@ -1,30 +1,23 @@
 body {
-  font-family: 'Nanum Brush Script', cursive;
-}
-.section {
-  padding-left: 1px;
-  padding-bottom: 100px;
-  background-image: url("./images/back_img.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  font-family: "Nanum Brush Script", cursive;
   width: 100%;
-  position: absolute;
+  margin-left: 0;
+  margin-top: 0;
 }
 
 .nav {
-  position: relative;
   display: flex;
   position: fixed;
+  top: 0px;
+  left: 0px;
   height: 70px;
   width: 100%;
   justify-content: center;
   background-color: gray;
-  margin-top: -10px;
-  margin-left: -1px;
 }
 
 .nav-title {
-  font-size:40px;
+  font-size: 40px;
   color: #b8860b;
   margin: auto 0;
 }
@@ -65,36 +58,51 @@ ul {
   display: flex;
   margin-top: 90px;
   padding-bottom: 20px;
-  border-bottom: white 2px solid;
+  border-bottom: black 2px solid;
   width: 100%;
   justify-content: center;
 }
+.profile-photoDiv {
+  margin-left: 25px;
+}
 
-.profile-photo {
+.profile-photoDiv-photo {
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  margin-right: 50px;
-  margin-bottom: 20px;
 }
 
 .profile-comment {
-  width: 600px;
-  color: white;
+  width: 500px;
+  margin-left: 75px;
   font-size: 30px;
-  margin: auto 0;
   font-weight: bold;
-  line-height: 50px;
+  line-height: 40px;
 }
 
 .hahaha {
   width: 750px;
-  color: white;
+  height: 750px;
   margin: 0 auto;
+  margin-bottom: 1000px;
 }
 
 .sample {
-  height: 600px;
-  width: 750px;
+  display: block;
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
   margin-top: 50px;
+  border-radius: 20px;
+}
+
+footer {
+  background-color: gray;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
 }
