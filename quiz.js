@@ -25,9 +25,33 @@ function init() {
     {
       question: "저의 취미는 무엇일까요?",
       anwser:
-        "딱히 취미라고 할만한건 없는거 같고 술도 좋아하고 사람도 좋아합니다.",
+        "요즘은 JS관련 구글링..? ^^.",
     },
   ];
 
-  console.log(data[1].anwser);
+  const $quizBoard = document.querySelector(".quiz-board");
+
+  for (let i = 0; i < data.length; i++) {
+    const $quizCard = document.createElement("div");
+    $quizCard.classList.add("quiz-card");
+    $quizCard.id = i;
+    $quizCard.innerText = data[i].question;
+    $quizBoard.appendChild($quizCard);
+  }
+
+  const $quizCard = document.querySelectorAll(".quiz-card");
+
+  for (let i = 0; i < $quizCard.length; i++) {
+    $quizCard[i].addEventListener("click", () => {
+      if ($quizCard[i].classList.contains("answer")) {
+        $quizCard[i].classList.remove("answer");
+        $quizCard[i].textContent = data[i].question;
+        $quizCard[i].classList.add("click");
+      } else {
+        $quizCard[i].classList.add("answer");
+        $quizCard[i].textContent = data[i].anwser;
+        $quizCard[i].classList.remove("click");
+      }
+    });
+  }
 }

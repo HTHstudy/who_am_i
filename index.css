@@ -106,3 +106,54 @@ footer {
   line-height: 30px;
   font-weight: 500;
 }
+
+.quiz-board {
+  width: 700px;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.quiz-card {
+  border-radius: 20px;
+  width: 200px;
+  height: 200px;
+  margin: auto 0;
+  text-align: center;
+  display: block;
+  line-height: 200px;
+  font-size: 19px;
+  font-weight: bold;
+  background-color: skyblue;
+  box-shadow: 6px 6px 6px 6px gray;
+}
+
+.answer {
+  background-color: burlywood;
+  animation: slide 0.2s;
+}
+
+.click {
+  animation: slide2 0.2s;
+}
+
+@keyframes slide {
+  from {
+    transform: scale(0.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slide2 {
+  from {
+    transform: scale(0.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
