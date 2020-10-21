@@ -12,7 +12,7 @@ function init() {
     },
     {
       question: "저는 어디에 살까요?",
-      anwser: "강남구 대치동에 거주하고 있습니다.",
+      anwser: "강남구 대치동에 살고 있습니다.",
     },
     {
       question: "저의 고향은 어디일까요?",
