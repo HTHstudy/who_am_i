@@ -9,81 +9,72 @@ function init() {
 
   tagCreate();
   randomNumber();
-  // installMine();
-  // viewStatus();
+  viewStatus();
 
-  // function viewStatus() {
-  //   const $blockId = document.querySelectorAll(".block");
-  //   for (let i = 0; i < lowRow * lowColumn; i++) {
-  //     if ($blockId[i].getAttribute("ismine") === "true") {
-  //       $blockId[i].textContent = "mine";
-  //     }
+  function viewStatus() {
+    for (let i = 0; i < lowRow; i++) {
+      for (let j = 0; j < lowColumn; j++) {
+        // if (randomArr[i][j] === "m") {
+        //   document.getElementById(`${i}-${j}`).textContent = "m"; // 필요없는 부분?
+        // }
+        document.getElementById(`${i}-${j}`).textContent = randomArr[i][j];
+      }
+    }
+  }
 
-  //     // if(foo < 9)
-  //     // if(foo % 9 === 0)
-  //     // if(foo % 9 === 8)
-  //     // if(foo > 71)
-  //   }
-  // }
-
-  // function installMine() {
-  //   const $blockId = document.querySelectorAll(".block");
-
-  //   for (let i = 0; i < lowRow * lowColumn; i++) {
-  //     $blockId[i].setAttribute("aroundmine", 0);
-  //     for (let j = 0; j < randomArr.length; j++) {
-  //       if (String(randomArr[j]) === $blockId[i].id) {
-  //         $blockId[i].setAttribute("ismine", true);
-  //       }
-  //     }
-  //   }
-  // }
+  function installMine(chkRow, chekColumn) {
+    for (let i = chkRow - 1; i < chkRow + 2; i++) {
+      for (let j = chekColumn - 1; j < chekColumn + 2; j++) {
+        if (
+          i < 0 ||
+          j < 0 ||
+          i === lowRow ||
+          j === lowColumn ||
+          (i === chkRow && j === chekColumn)
+        ) {
+          continue;
+        }
+        randomArr[i][j] += randomArr[i][j] !== "m" ? 1 : "";
+      }
+    }
+    //console.log(arr);
+  }
 
   function randomNumber() {
     const mineCount = 10;
+    const $block = document.querySelectorAll(".block");
+
+    for (let i = 0; i < lowRow; i++) {
+      // 2차원 배열 만들어주기.
+      randomArr.push([]);
+      for (let j = 0; j < lowColumn; j++) {
+        randomArr[i].push(0);
+      }
+    }
 
     for (let i = 0; i < mineCount; i++) {
-      const result = Math.floor(Math.random() * (lowRow * lowColumn));
-      if (randomArr.includes(result)) {
+      let randomRow = Math.floor(Math.random() * lowRow);
+      let randomcolumn = Math.floor(Math.random() * lowColumn);
+
+      if (randomArr[randomRow][randomcolumn] === "m") {
         i--;
       } else {
-        randomArr.push(result);
+        randomArr[randomRow][randomcolumn] = "m";
+        installMine(randomRow, randomcolumn, randomArr);
       }
     }
     console.log(randomArr);
-
-    // let randomRow = Math.floor(Math.random() * lowRow);
-    // let randomcolumn = Math.floor(Math.random() * lowColumn);
-
-    // for (let i = 0; i < mineCount; i++) {
-    //   if (randomArr[randomRow][randomcolumn] === "m") {
-    //     i--;
-    //   } else {
-    //     randomArr[randomRow][randomcolumn] = "m";
-    //   }
-    // }
-    // console.log(randomArr);
   }
 
   function tagCreate() {
     const $gameBoard = document.querySelector(".game-board");
-
-    // for (let i = 0; i < lowColumn * lowRow; i++) {
-    //   const $block = document.createElement("div");
-    //   $block.classList.add("block");
-    //   $block.id = i;
-    //   $block.textContent = i; // 지울거임..
-    //   $block.style.height = `${720 / lowColumn}px`;
-    //   $block.style.width = `${720 / lowRow}px`;
-    //   $gameBoard.appendChild($block);
-    // }
 
     for (let i = 0; i < lowRow; i++) {
       for (let j = 0; j < lowColumn; j++) {
         const $block = document.createElement("div");
         $block.classList.add("block");
         $block.id = `${i}-${j}`;
-        $block.textContent = $block.id; // 지울거임..
+        //$block.textContent = $block.id; // 지울거임..
         $block.style.height = `${720 / lowColumn}px`;
         $block.style.width = `${720 / lowRow}px`;
         $gameBoard.appendChild($block);
