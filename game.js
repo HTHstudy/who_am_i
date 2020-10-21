@@ -14,9 +14,6 @@ function init() {
   function viewStatus() {
     for (let i = 0; i < lowRow; i++) {
       for (let j = 0; j < lowColumn; j++) {
-        // if (randomArr[i][j] === "m") {
-        //   document.getElementById(`${i}-${j}`).textContent = "m"; // 필요없는 부분?
-        // }
         document.getElementById(`${i}-${j}`).textContent = randomArr[i][j];
       }
     }
@@ -37,7 +34,6 @@ function init() {
         randomArr[i][j] += randomArr[i][j] !== "m" ? 1 : "";
       }
     }
-    //console.log(arr);
   }
 
   function randomNumber() {
@@ -74,7 +70,6 @@ function init() {
         const $block = document.createElement("div");
         $block.classList.add("block");
         $block.id = `${i}-${j}`;
-        //$block.textContent = $block.id; // 지울거임..
         $block.style.height = `${720 / lowColumn}px`;
         $block.style.width = `${720 / lowRow}px`;
         $gameBoard.appendChild($block);
