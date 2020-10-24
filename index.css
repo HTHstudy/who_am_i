@@ -159,46 +159,31 @@ footer {
   }
 }
 
-section {
-  border: 1px solid black;
-  width: 780px;
-  height: 880px;
-  margin: 0 auto;
-  margin-top: 100px;
-  position: relative;
-}
-
-.score {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 80px;
-  border: red 1px solid;
-  display: flex;
-  justify-content: center;
-}
-
-.mine {
-  height: 60px;
-  width: 100px;
-  border: blue 1px solid;
-}
-
-.timer {
-  height: 60px;
-  width: 100px;
-  border: green 1px solid;
-}
-
-.game-board {
-  width: 750px;
-  height: 750px;
-  border: red 1px solid;
-  margin-top: 100px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
 .block {
-  border: black 1px solid;
+  width: 28px;
+  height: 28px;
+  border: 1px solid black;
+  float: left;
+  background: grey;
+  /* font-family: fantasy; */
+  font-weight: bold;
+}
+.block:hover {
+  background-color: #a9a9a9;
+}
+#score {
+  color: black;
+  font-size: 20px;
+}
+#app {
+  width: 270px;
+  height: 270px;
+  border: 1px solid black;
+  text-align: center;
+}
+#set {
+  padding: 30px;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
 }

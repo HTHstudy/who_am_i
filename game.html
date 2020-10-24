@@ -74,15 +74,16 @@
       </div>
     </div>
     <!-- 여기 추가 -->
-    <section>
-      <div class="score">
-        <div class="mine">10</div>
-        <div class="timer">0</div>
-      </div>
-      <div class="game-board">
-        <div></div>
-      </div>
-    </section>
+    <h1 style="text-align: center">지뢰찾기 게임</h1>
+    <div
+      id="app"
+      oncontextmenu="return false;"
+      style="margin: 100px auto 0 auto"
+    ></div>
+    <div id="set">
+      <button type="button" id="restart">재시작</button><br />
+      <label>남은 지뢰</label> <span id="score"></span>
+    </div>
     <script src="./game.js"></script>
   </body>
 </html>
