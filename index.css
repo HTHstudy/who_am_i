@@ -187,3 +187,9 @@ footer {
   height: 100px;
   margin: 0 auto;
 }
+.flag {
+  background-color: green;
+}
+.ismine {
+  background-color: red;
+}
