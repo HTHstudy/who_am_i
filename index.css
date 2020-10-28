@@ -63,6 +63,7 @@ ul {
   width: 100%;
   justify-content: center;
 }
+
 .profile-photoDiv {
   margin-left: 25px;
 }
@@ -103,9 +104,11 @@ footer {
   bottom: 10px;
   right: 10px;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 30px;
   font-weight: 500;
+  font-family: "Hanna", sans-serif;
+  padding: 20px 20px;
 }
 
 .quiz-board {
@@ -159,16 +162,21 @@ footer {
   }
 }
 
+.game-container {
+  font-family: "Hanna", sans-serif;
+}
+
 .game-title {
   padding-top: 80px;
 }
+
 .block {
   width: 28px;
   height: 28px;
   border: 1px solid black;
   float: left;
   background: grey;
-  font-weight: bold;
+  color: blue;
 }
 
 .block:hover {
@@ -229,32 +237,124 @@ footer {
 
 p {
   padding: 80px 0;
+  font-family: "Hanna", sans-serif;
+}
+
+.notice {
+  display: flex;
+  text-align: center;
+}
+
+.rule-div {
+  display: inline-block;
+  width: 100%;
+  margin-top: 50px;
+  position: relative;
 }
 
 .rule-button {
   cursor: pointer;
-}
-.rule {
-  width: 570px;
-  height: 300px;
-  font-size: 25px;
-  line-height: 50px;
-  background-color: #505050;
+  background-color: skyblue;
   color: white;
-  position: fixed;
-  top: 100px;
-  bottom: 0;
-  left: 20px;
-  right: 0;
-  z-index: 7000;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  outline: none;
   font-family: "Hanna", sans-serif;
-  padding-top: 40px;
+  width: 80px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
-.hidden {
+.rule {
+  text-align: left;
+  position: absolute;
   display: none;
+  background-color: #f1f1f1;
+  min-width: 380px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-family: "Hanna", sans-serif;
+  left: 50%;
+  top: 48px;
+  margin-left: -56px;
+  line-height: 30px;
 }
 
-.view {
-  display: initial;
+.rule-button:hover .rule {
+  display: block;
+  background-color: #ddd;
+  color: black;
+}
+
+.rule-button:hover {
+  background-color: #75ffca;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.dropbtn {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  font-family: "Hanna", sans-serif;
+  width: 80px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 48px;
+  left: 50%;
+  margin-left: -56px;
+  font-family: "Hanna", sans-serif;
+}
+
+.dropdown-content .level {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.dropdown-content .level:hover {
+  background-color: #ddd;
+}
+
+.dropbtn:hover .dropdown-content {
+  display: block;
+}
+
+.dropbtn:hover {
+  background-color: #3e8e41;
+}
+
+#restart {
+  background-color: darkblue;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  font-family: "Hanna", sans-serif;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+#restart:hover {
+  background-color: #0a82ff;
 }

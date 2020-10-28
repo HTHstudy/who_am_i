@@ -1,29 +1,15 @@
 (function () {
   let randomArr = [];
   let checkArr = [];
-  let mineCount = 10;
-  const setRow = 9;
-  const setColumn = 9;
-  // 초급: 9*9, 지뢰 10개
-  // 중급: 16*16, 지뢰 40개
-  // 고급: 30* 16, 지뢰 99개
-  // 난이도 선택 추가 예정
+  let mineCount = 10; // 초기값 10으로 세팅
+  let setRow = 9; // 초기값 9로 세팅
+  let setColumn = 9; // 초기값 9로 세팅
+  const $app = document.getElementById("app");
   const $mineCounter = document.getElementById("score");
   const $resetBtn = document.getElementById("restart");
-  const $ruleBtn = document.querySelector(".rule-button");
-
-  $ruleBtn.addEventListener("click", () => {
-    const $rulePage = document.querySelector(".rule");
-    if ($rulePage.classList.contains("hidden")) {
-      $rulePage.classList.add("view");
-      $rulePage.classList.remove("hidden");
-    } else {
-      $rulePage.classList.add("hidden");
-      $rulePage.classList.remove("view");
-    }
-  });
 
   $mineCounter.innerHTML = mineCount;
+  setLevel();
   randomNumber();
   createBoard();
   openBlock();
@@ -32,18 +18,57 @@
     GameRestart();
   });
 
+  function setLevel() {
+    const $dropdownContent = document.querySelector(".dropdown-content");
+    $dropdownContent.addEventListener("click", (ev) => {
+      switch (ev.target.id) {
+        case "L":
+          $app.setAttribute("level", "L");
+          mineCount = 10;
+          setRow = 9;
+          setColumn = 9;
+          break;
+        case "M":
+          $app.setAttribute("level", "M");
+          mineCount = 40;
+          setRow = 16;
+          setColumn = 16;
+          break;
+        case "H":
+          $app.setAttribute("level", "H");
+          mineCount = 99;
+          setRow = 16;
+          setColumn = 30;
+          break;
+      }
+      GameRestart();
+    });
+  }
+
   function GameRestart() {
-    resetGame();
+    resetBoard();
     randomArr = [];
     checkArr = [];
-    mineCount = 10;
+
+    switch ($app.getAttribute("level")) {
+      case "L":
+        mineCount = 10;
+        break;
+      case "M":
+        mineCount = 40;
+        break;
+      case "H":
+        mineCount = 99;
+        break;
+    }
+
     $mineCounter.innerHTML = mineCount;
     randomNumber();
     createBoard();
     openBlock();
   }
 
-  function resetGame() {
+  function resetBoard() {
     const $block = document.querySelectorAll(".block");
     const $gameContainer = document.querySelector(".game-container");
     const $gameResult = document.querySelector(".game-result");
@@ -68,10 +93,10 @@
     $gameContainer.classList.add("result-bg");
     $gameResult.classList.add("game-result");
     if (result) {
-      $gameResult.style.backgroundColor = "blue";
+      $gameResult.style.backgroundColor = "#00C3FF";
       $pTag.innerHTML = "승리 하셨습니다.";
     } else {
-      $gameResult.style.backgroundColor = "red";
+      $gameResult.style.backgroundColor = "#FF91C8";
       $pTag.innerHTML = "패배 하셨습니다.";
     }
 
@@ -85,8 +110,9 @@
     if (mineCount === 0) {
       $block.forEach((block) => {
         const id = block.id;
-        const row = id.substr(0, 1);
-        const column = id.substr(2, 1);
+        const idArr = id.split("-");
+        const row = idArr[0];
+        const column = idArr[1];
         const checkValue = randomArr[row][column];
         if (block.getAttribute("isminecheck") === "true") {
           checkArr.push(checkValue);
@@ -108,25 +134,20 @@
       block.addEventListener("click", function () {
         const id = block.id;
         const idArr = id.split("-");
-
-        const row = idArr[0]; //id.substr(0, 1);
-        const column = idArr[1]; //id.substr(2, 1);
+        const row = idArr[0];
+        const column = idArr[1];
         if (randomArr[row][column] === "m") {
           block.classList.add("ismine");
           mineCount--;
           $mineCounter.innerHTML = mineCount;
-
           gameOver(false);
         }
-
         viewBlock(row, column);
       });
     });
     $block.forEach((block) => {
       // 우클릭 이벤트
       const id = block.id;
-      // const row = id.substr(0, 1);
-      // const column = id.substr(2, 1);
       block.addEventListener("contextmenu", function () {
         if (block.getAttribute("isclicked") === "false") {
           block.classList.add("flag");
@@ -142,7 +163,6 @@
           }
         }
         $mineCounter.innerHTML = mineCount;
-
         gameResult(mineCount);
       });
     });
@@ -214,8 +234,6 @@
   }
 
   function randomNumber() {
-    const mineCount = 10;
-
     for (let i = 0; i < setRow; i++) {
       // 2차원 배열 만들어주기.
       randomArr.push([]);
@@ -238,7 +256,6 @@
   }
 
   function createBoard() {
-    const $app = document.getElementById("app");
     $app.style.height = `${setRow * 30}px`;
     $app.style.width = `${setColumn * 30}px`;
 

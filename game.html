@@ -82,17 +82,31 @@
       <div class="game-title" style="text-align: center">
         <h1>지뢰찾기 게임</h1>
       </div>
-      <div id="app" oncontextmenu="return false;"></div>
-
-      <div class="rule-div">
-        <button class="rule-button">게임방법</button>
-        <div class="rule hidden">
-          1. 블럭을 클릭하면 해당 블럭 주변의 지뢰 개수가 표시 됩니다.<br />
-          2. 블럭을 우클릭하면 지뢰를 제거 할수 있습니다.<br />
-          3. 지뢰가 매설된 블럭을 클릭하면 즉시 게임이 종료 됩니다. <br />
-          4. 10개의 지뢰를 성공적으로 제거하면 당신의 승리입니다.
+      <div class="notice">
+        <div class="rule-div">
+          <div class="rule-button">
+            <span>게임방법</span>
+            <div class="rule">
+              1. 블럭을 클릭하면 해당 블럭 주변의 지뢰 개수가 표시 됩니다.<br />
+              2. 블럭을 우클릭하면 지뢰를 제거 할수 있습니다.<br />
+              3. 지뢰가 매설된 블럭을 클릭하면 즉시 게임이 종료 됩니다. <br />
+              4. 10개의 지뢰를 성공적으로 제거하면 당신의 승리입니다.
+            </div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <div class="dropbtn">
+            <span>난이도 선택</span>
+            <div class="dropdown-content">
+              <div class="level" id="L">초급</div>
+              <div class="level" id="M">중급</div>
+              <div class="level" id="H">고급</div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div id="app" level="L" oncontextmenu="return false;"></div>
 
       <div id="set">
         <button type="button" id="restart">재시작</button><br />
